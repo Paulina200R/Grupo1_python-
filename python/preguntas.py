@@ -32,17 +32,33 @@ class QuizApp:
         self.imagen_resultado = ft.Image(src="", width=100, height=100)
         self.imagen_final = ft.Image(src="", width=200, height=200)  # Imagen final
 
-        self.page.add(ft.Column(
+        # Crear un contenedor para centrar el contenido
+        self.container = ft.Column(
             controls=[
-                self.question_label,
+                ft.Row(
+                    controls=[self.question_label],
+                    alignment=ft.MainAxisAlignment.CENTER
+                ),
                 self.answer_entry,
                 self.submit_button,
-                self.resultado,
-                self.imagen_resultado,
-                self.imagen_final  # Agregar imagen final
-            ]
-        ))
+                ft.Row(
+                    controls=[self.resultado],
+                    alignment=ft.MainAxisAlignment.CENTER
+                ),
+                ft.Row(
+                    controls=[self.imagen_resultado],
+                    alignment=ft.MainAxisAlignment.CENTER
+                ),
+                ft.Row(
+                    controls=[self.imagen_final],
+                    alignment=ft.MainAxisAlignment.CENTER
+                )
+            ],
+            alignment=ft.MainAxisAlignment.CENTER,  # Centrar todos los controles en el contenedor
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER
+        )
 
+        self.page.add(self.container)
         self.update_question()
 
     def update_question(self):
@@ -65,7 +81,7 @@ class QuizApp:
         if respuesta_usuario.lower() == respuesta_correcta.lower():
             self.puntaje += 1
             self.resultado.value = "¡Correcto!"
-            self.imagen_resultado.src = src="./image/feliz.jpeg"  # URL de la imagen de una cara feliz
+            self.imagen_resultado.src = "./image/feliz.jpeg"  # URL de la imagen de una cara feliz
         else:
             self.resultado.value = f"Incorrecto. La respuesta correcta era: {respuesta_correcta}"
             self.imagen_resultado.src = "./image/enojado.jpeg"  # URL de la imagen de una cara enojada
@@ -77,18 +93,19 @@ class QuizApp:
         resultado = f"¡Felicidades! Tu puntaje final es: {self.puntaje} de {self.total_preguntas}\n"
         if self.puntaje == self.total_preguntas:
             resultado += "¡Perfecto! ¡Eres un genio!"
-            self.imagen_final.src = "https://example.com/great_job.png"  # Imagen para puntaje perfecto
+            self.imagen_final.src = "./image/enojado.jpeg"  # Imagen para puntaje perfecto
         elif self.puntaje >= self.total_preguntas * 0.7:
             resultado += "¡Muy bien! Tienes buen conocimiento."
-            self.imagen_final.src = "https://example.com/well_done.png"  # Imagen para buen desempeño
+            self.imagen_final.src = "./image/enojado.jpeg"  # Imagen para buen desempeño
         elif self.puntaje >= self.total_preguntas * 0.4:
             resultado += "No está mal, pero puedes mejorar."
-            self.imagen_final.src = "https://example.com/keep_trying.png"  # Imagen para desempeño medio
+            self.imagen_final.src = "./image/enojado.jpeg"  # Imagen para desempeño medio
         else:
             resultado += "Necesitas estudiar más."
-            self.imagen_final.src = "/image/triste.jpeg"  # Imagen para bajo desempeño
+            self.imagen_final.src = "./image/triste.jpeg"  # Imagen para bajo desempeño
 
         self.resultado.value = resultado
         self.page.update()
 
 ft.app(target=QuizApp)
+        
