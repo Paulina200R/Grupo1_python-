@@ -30,8 +30,8 @@ class QuizApp:
         self.answer_entry = ft.TextField(label="Tu respuesta", keyboard_type=ft.KeyboardType.TEXT)
         self.submit_button = ft.ElevatedButton(text="Enviar", on_click=self.check_answer)
         self.resultado = ft.Text(size=20)
-        self.imagen_resultado = ft.Image(src="", width=100, height=100)
-        self.imagen_final = ft.Image(src="", width=200, height=200)  # Imagen final
+        self.imagen_resultado = ft.Image(src="", width=7000, height=200)
+        self.imagen_final = ft.Image(src="", width=1000, height=200)  # Imagen final
 
         self.page.add(ft.Column(
             controls=[
@@ -40,7 +40,7 @@ class QuizApp:
                 self.submit_button,
                 self.resultado,
                 self.imagen_resultado,
-                self.imagen_final  # Agregar imagen final
+                # self.imagen_final  # Agregar imagen final
             ]
         ))
 
