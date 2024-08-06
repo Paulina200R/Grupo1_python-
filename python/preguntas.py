@@ -8,6 +8,12 @@ preguntas = {
     #Agregar mas Preguntas aqui
 } 
 
+# Mezclar el orden de las preguntas 
+preguntas_aleatorias = list(preguntas.item())
+random.shuffle(preguntas_aleatorias)
+
+puntaje = 0 
+
 # parte lisandro
 for pregunta, respuesta in preguntas_aleatorias:
     print(pregunta)
