@@ -78,13 +78,13 @@ class QuizApp:
         resultado = f"¡Felicidades! Tu puntaje final es: {self.puntaje} de {self.total_preguntas}\n"
         if self.puntaje == self.total_preguntas:
             resultado += "¡Perfecto! ¡Eres un genio!"
-            self.imagen_final.src = "https://example.com/great_job.png"  # Imagen para puntaje perfecto
+            self.imagen_final.src = "/image/genio.jpeg"  # Imagen para puntaje perfecto
         elif self.puntaje >= self.total_preguntas * 0.7:
             resultado += "¡Muy bien! Tienes buen conocimiento."
-            self.imagen_final.src = "https://example.com/well_done.png"  # Imagen para buen desempeño
+            self.imagen_final.src = "/image/intelectual.jpeg"  # Imagen para buen desempeño
         elif self.puntaje >= self.total_preguntas * 0.4:
             resultado += "No está mal, pero puedes mejorar."
-            self.imagen_final.src = "https://example.com/keep_trying.png"  # Imagen para desempeño medio
+            self.imagen_final.src = "/image/feliz.jpeg"  # Imagen para desempeño medio
         else:
             resultado += "Necesitas estudiar más."
             self.imagen_final.src = "/image/triste.jpeg"  # Imagen para bajo desempeño
