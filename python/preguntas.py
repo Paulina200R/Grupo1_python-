@@ -27,7 +27,7 @@ class QuizApp:
 
         # Crear los controles de la interfaz
         self.question_label = ft.Text(size=20)
-        self.answer_entry = ft.TextField(label="Tu respuesta", keyboard_type=ft.KeyboardType.TEXT)
+        self.answer_entry = ft.TextField(label="Tu respuesta", keyboard_type=ft.KeyboardType.TEXT, width=800)
         self.submit_button = ft.ElevatedButton(text="Enviar", on_click=self.check_answer)
         self.resultado = ft.Text(size=20)
         self.imagen_resultado = ft.Image(src="", width=100, height=100)
